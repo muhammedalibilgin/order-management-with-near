@@ -3,6 +3,7 @@ import "./App.css";
 import "regenerator-runtime/runtime";
 import React from "react";
 import PropTypes from "prop-types";
+import CreateOrder from "./components/CreateOrder";
 
 function App({ contract, currentUser, nearConfig, wallet }) {
     const signIn = () => {
@@ -16,6 +17,8 @@ function App({ contract, currentUser, nearConfig, wallet }) {
 
     return (
         <div className="App">
+            {/* {console.log(contract.create({ product: "hah", unit: 12 }))} */}
+
             <h1>NEAR Order App</h1>
             <hr />
             <br />
@@ -30,6 +33,9 @@ function App({ contract, currentUser, nearConfig, wallet }) {
                         <br />
                         <br />
                         <button onClick={signOut}>Log out</button>
+                        <br />
+                        <hr />
+                        <CreateOrder contract={contract} />
                     </h2>
                 </div>
             ) : (
