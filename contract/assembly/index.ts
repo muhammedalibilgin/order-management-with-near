@@ -10,3 +10,13 @@ export function add(a: i32, b: i32): i32 {
 export function create(product: string, unit: i32): Order {
     return Order.insert(product, unit);
 }
+
+//find by id
+export function getById(id: u32): Order {
+    return Order.findById(id);
+}
+
+//get all list
+export function get(start: u32, end: u32 = 10): Order[] {
+    return Order.find(start, end);
+}

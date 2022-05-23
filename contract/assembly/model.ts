@@ -16,10 +16,21 @@ export class Order {
         this.completed = false;
     }
 
+    //create
     static insert(product: string, unit: u32): Order {
         const order = new Order(product, unit);
 
         orders.set(order.id, order);
         return order;
+    }
+
+    //get a order by id
+    static findById(id: u32): Order {
+        return orders.getSome(id);
+    }
+
+    // get all list
+    static find(start: u32, end: u32): Order[] {
+        return orders.values(start, start + end);
     }
 }
