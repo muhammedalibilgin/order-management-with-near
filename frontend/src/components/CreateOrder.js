@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const CreateOrder = ({ contract }) => {
     const [product, setProduct] = useState("");
-    const [unit, setUnit] = useState(0);
+    const [unit, setUnit] = useState("");
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (event) => {
@@ -10,11 +10,12 @@ const CreateOrder = ({ contract }) => {
 
         setLoading(true);
         console.log(1);
-
+        console.log("unit", unit);
         // invoke the smart contract's create method
-        const order = await contract.create({ product: product, unit: unit });
+        const order = await contract.create({ product: product, unit: Number(unit) });
         console.log(2);
         setProduct("");
+        setUnit("");
         setLoading(false);
         console.log(3);
 

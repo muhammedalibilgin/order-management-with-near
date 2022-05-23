@@ -6,10 +6,10 @@ export let orders = new PersistentUnorderedMap<u32, Order>("order");
 export class Order {
     id: u32;
     product: string;
-    unit: u32;
+    unit: i32;
     completed: bool;
 
-    constructor(product: string, unit: u32) {
+    constructor(product: string, unit: i32) {
         this.id = math.hash32<string>(product);
         this.product = product;
         this.unit = unit;

@@ -1,42 +1,30 @@
-import "./App.css";
+import "./css/App.css";
 
 import "regenerator-runtime/runtime";
 import React from "react";
 import PropTypes from "prop-types";
-import CreateOrder from "./components/CreateOrder";
+
+import Head from "./components/Head";
+import CurrentUser from "./components/CurrentUser";
 
 function App({ contract, currentUser, nearConfig, wallet }) {
     const signIn = () => {
         wallet.requestSignIn(nearConfig.contractName, "NEAR ToDo List");
     };
 
-    const signOut = () => {
-        wallet.signOut();
-        window.location.replace(window.location.origin + window.location.pathname);
-    };
-
     return (
         <div className="App">
             {/* {console.log(contract.create({ product: "hah", unit: 12 }))} */}
 
-            <h1>NEAR Order App</h1>
+            <br />
+            <Head />
             <hr />
             <br />
             {currentUser ? (
                 <div>
-                    <h2>
-                        Account ID:
-                        <span id="account-id">{currentUser.accountId}</span>
-                        <br />
-                        Account Balance:
-                        <span id="account-id">{currentUser.balance / 1000000000000000000000000} </span>
-                        <br />
-                        <br />
-                        <button onClick={signOut}>Log out</button>
-                        <br />
-                        <hr />
-                        <CreateOrder contract={contract} />
-                    </h2>
+                    <CurrentUser contract={contract} currentUser={currentUser} nearConfig={nearConfig} wallet={wallet} />
+                    <br />
+                    <hr />
                 </div>
             ) : (
                 <div>

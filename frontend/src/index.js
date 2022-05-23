@@ -1,10 +1,11 @@
 // src/index.js
 import React from "react";
-import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 import getConfig from "./config.js";
 import * as nearAPI from "near-api-js";
+
+import * as ReactDOMClient from "react-dom/client";
 
 // buffer is not defined---<
 import { Buffer } from "buffer";
@@ -50,9 +51,9 @@ async function initContract() {
     return { contract, currentUser, nearConfig, walletConnection };
 }
 
+const container = document.getElementById("root");
+const root = ReactDOMClient.createRoot(container);
+
 window.nearInitPromise = initContract().then(({ contract, currentUser, nearConfig, walletConnection }) => {
-    ReactDOM.render(
-        <App contract={contract} currentUser={currentUser} nearConfig={nearConfig} wallet={walletConnection} />,
-        document.getElementById("root")
-    );
+    root.render(<App contract={contract} currentUser={currentUser} nearConfig={nearConfig} wallet={walletConnection} />);
 });

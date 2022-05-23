@@ -7,6 +7,6 @@ export function add(a: i32, b: i32): i32 {
 }
 
 //npx near call $(cat neardev/dev-account) create '{"product":"milk","unit":6}' --accountId malibil.testnet
-export function create(product: string, unit: u32): Order {
+export function create(product: string, unit: i32): Order {
     return Order.insert(product, unit);
 }
