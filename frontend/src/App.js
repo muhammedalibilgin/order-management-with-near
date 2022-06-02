@@ -24,7 +24,7 @@ function App({ contract, currentUser, nearConfig, wallet }) {
                 <div>
                     <CurrentUser contract={contract} currentUser={currentUser} nearConfig={nearConfig} wallet={wallet} />
                     <br />
-                    <hr />
+                    <br />
                 </div>
             ) : (
                 <div>

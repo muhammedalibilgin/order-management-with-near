@@ -9,8 +9,6 @@ const CreateOrder = ({ contract }) => {
         event.preventDefault();
 
         setLoading(true);
-        console.log(1);
-        console.log("unit", unit);
         // invoke the smart contract's create method
         const order = await contract.create({ product: product, unit: Number(unit) });
         console.log(2);
@@ -20,6 +18,7 @@ const CreateOrder = ({ contract }) => {
         console.log(3);
 
         console.log("order=>", order);
+        window.location.reload();
     };
 
     return (

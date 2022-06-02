@@ -16,7 +16,7 @@ export function getById(id: u32): Order {
     return Order.findById(id);
 }
 
-//get all list
-export function get(start: u32, end: u32 = 10): Order[] {
+//npx near view $(cat neardev/dev-account) get '{"start":0}' --accountId malibil.testnet
+export function get(start: u32, end: u32 = 20): Order[] {
     return Order.find(start, end);
 }
